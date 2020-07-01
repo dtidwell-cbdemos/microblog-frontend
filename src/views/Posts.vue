@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <hr class="hr is-invisible">
-    <div class="box" style="background-color: orange;">
+    <div class="box" style="background-color: purple;">
       <h1 class="title">Posts version 1.0.13 <span v-if="show_title"> - Show New Title!</span></h1>
       <hr class="hr">
       <div class="columns" v-if="show_sidebar">
