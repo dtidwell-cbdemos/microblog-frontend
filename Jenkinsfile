@@ -34,7 +34,6 @@ pipeline {
       steps {
         kanikoBuildPushGeneric("${repository}", "latest", "${gcpProject}") {
           checkout scm
-          gitShortCommit()
         }
       }
     }
