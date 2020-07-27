@@ -1,4 +1,4 @@
-library 'cb-days@tf-overhaul'
+library 'cb-days@master'
 def testPodYaml = libraryResource 'podtemplates/vuejs/vuejs-test-pod.yml'
 pipeline {
   agent none
@@ -35,6 +35,7 @@ pipeline {
         kanikoBuildPushGeneric("${repository}", "latest", "${gcpProject}") {
           checkout scm
         }
+        echo "Pushed image to gcr.io/${gcpProject}/${repository}"
       }
     }
   }
