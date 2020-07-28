@@ -42,7 +42,7 @@ pipeline {
       steps{
         script {
           node {
-            cloudBeesFlowTriggerRelease configuration: 'Local CBCD', projectName: 'dtidwell Demo', parameters: '{"release": {"releaseName": "August Microblog Update", "stages":[{"stageName":"Release Readiness","stageValue":true}, {"stageName": "QA","stageValue":true}, {"stageName": "Pre-Prod","stageValue":true}, {"stageName": "Prod","stageValue":true}], "parameters":[{"parameterName":"branchName","parameterValue":"master"},{"parameterName":"microblog-frontend_version", "parameterValue": "1.0.14"}, {"parameterName": "microblog-backend_version", "parameterValue": "1.0.2"}, {"parameterName": "microblog-db_version", "parameterValue": "12.1-alpine"}]}}', releaseName: 'August Microblog Update', startingStage: 'Release Readiness'
+            cloudBeesFlowTriggerRelease configuration: 'Local CBCD', projectName: 'dtidwell Demo', parameters: '{"release": {"releaseName": "August Microblog Update", "stages":[{"stageName":"Release Readiness","stageValue":true}, {"stageName": "QA","stageValue":true}, {"stageName": "Pre-Prod","stageValue":true}, {"stageName": "Prod","stageValue":true}], "parameters":[{"parameterName":"microblog-frontend_version", "parameterValue": "1.0.14"}, {"parameterName": "microblog-backend_version", "parameterValue": "1.0.2"}, {"parameterName": "microblog-db_version", "parameterValue": "12.1-alpine"}]}}', releaseName: 'August Microblog Update', startingStage: 'Release Readiness'
           }
         }
       }
