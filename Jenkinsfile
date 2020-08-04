@@ -35,7 +35,7 @@ pipeline {
         kanikoBuildPushGeneric("${repository}", "latest", "${gcpProject}") {
           checkout scm
         }
-        echo "Pushed image to gcr.io/${gcpProject}/dtidwell-cbdemos/${repository}"
+        echo "Pushed image to gcr.io/${gcpProject}/${repository}"
       }
     }
   }
