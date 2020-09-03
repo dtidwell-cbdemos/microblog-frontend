@@ -7,7 +7,7 @@ pipeline {
     preserveStashes(buildCount: 10)
   }
   environment {
-    repoOwner = "cb-demos"
+    repoOwner = "dtidwell-cbdemos"
     repository = "microblog-frontend"
     gcpProject = "core-flow-research"
   }
@@ -35,7 +35,7 @@ pipeline {
         kanikoBuildPushGeneric("${repository}", "latest", "${gcpProject}") {
           checkout scm
         }
-        echo "Pushed image to gcr.io/${gcpProject}/${repository}"
+        echo "Pushed image to gcr.io/${gcpProject}/${repoOwner}/${repository}"
       }
     }
   }
