@@ -32,7 +32,7 @@ pipeline {
     }
     stage('Build and Push Image') {
       steps {
-        kanikoBuildPushGeneric("${repository}", "latest", "${gcpProject}/${repoOwner}/") {
+        kanikoBuildPushGeneric("${repository}", "latest", "${gcpProject}/${repoOwner}") {
           checkout scm
         }
         echo "Pushed image to gcr.io/${gcpProject}/${repoOwner}/${repository}"
