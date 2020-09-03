@@ -4,7 +4,8 @@ import { betaAccess } from './users'
 
 export const Flags = {
   sidebar: new Rox.Flag(false),
-  title: new Rox.Flag(false)
+  title: new Rox.Flag(false), 
+  logo: new Rox.Flag(false)
 }
 
 export const configurationFetchedHandler = fetcherResults => {
