@@ -2,17 +2,22 @@
   <div class="container">
     <hr class="hr is-invisible">
     <div class="box" style="background-color: #22243c;">
-      <div class="columns">
+      <div class="columns" v-if="show_logo">
         <div class="column is-three-quarters">
           <h1 class="title" style="color: white;">Microblog - Share Your Thoughts!</h1>
         </div>
         <div class="column">
-          <span v-if="show_title">
             <img src="../assets/DW_wordmark.png"/>
-          </span>
         </div>
       </div>
-      <hr class="hr">
+      <div class="columns" v-else>
+        <div class="column is-three-quarters">
+          <h1 class="title" style="color: white;">Microblog - Share Your Thoughts!</h1>
+        </div>
+        <div class="column">
+            <img src="../assets/DW_wordmark.png"/>
+        </div>
+      </div>
       <div class="columns" v-if="show_sidebar">
         <div class="box column is-three-quarters">
           <div class="box">
@@ -29,9 +34,14 @@
         <div class="box column">
           <h3 class="is-size-4 has-text-weight-bold">Users list</h3>
           <ul>
-            <li v-for="user in users" :key="user.url">
-              <a :href="user.url">{{user.username}}</a>
-            </li>
+            <li>Shawn Ahmed</li>
+            <li style="font-weight: bold; color: green;">Emmanuel Bamishaye</li>
+            <li style="font-weight: bold; color: green;">Elena Benoit</li>
+            <li>Anand Chauhan</li>
+            <li style="font-weight: bold; color: green;">Brian Dawson</li>
+            <li>Logan Donley</li>
+            <li style="font-weight: bold; color: green;">Kathy Lam</li>
+            <li>Doug Tidwell</li>
           </ul>
         </div>
       </div>
@@ -70,7 +80,8 @@ export default {
       users: [],
       errors: [],
       show_sidebar: Flags.sidebar.isEnabled(),
-      show_title: Flags.title.isEnabled()
+      show_title: Flags.title.isEnabled(),
+      show_logo: Flags.logo.isEnabled()
     }
   },
   created () {
