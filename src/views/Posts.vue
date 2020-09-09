@@ -11,11 +11,8 @@
         </div>
       </div>
       <div class="columns" v-else>
-        <div class="column is-three-quarters">
-          <h1 class="title" style="color: white;">Microblog - Share Your Thoughts!</h1>
-        </div>
         <div class="column">
-            <img src="../assets/DW_wordmark.png"/>
+          <h1 class="title" style="color: white;">Microblog - Share Your Thoughts!</h1>
         </div>
       </div>
       <div class="columns" v-if="show_sidebar">
@@ -29,10 +26,14 @@
             <b-button type="is-dark" @click="addPost">Submit</b-button>
           </div>
           <hr class="hr">
-          <Post v-for="post in posts" :key="post.id" :post="post"/>
+        <ul>
+          <li><span style="font-weight: bold; color: green;">Elena Benoit 9:37 am:</span> Really enjoying today's keynote!</li>
+          <li><span style="font-weight: bold; color: green;">Brian Dawson 9:37 am:</span> First demo was awesome, looking forward to more product integrations.</li>
+          <li><span style="font-weight: bold; color: green;">Kathy Lam 9:39 am:</span> Feature flags are the most underrated technology in software development today. Fight me on this.</li>
+        </ul>
         </div>
         <div class="box column">
-          <h3 class="is-size-4 has-text-weight-bold">Users list</h3>
+          <h3 class="is-size-4 has-text-weight-bold">Users</h3>
           <ul>
             <li>Shawn Ahmed</li>
             <li style="font-weight: bold; color: green;">Emmanuel Bamishaye</li>
@@ -51,11 +52,16 @@
           <b-field label="What's going on today?"
                    class="is-marginless"
           >
-            <b-input v-model="message" maxlength="140" type="textarea"/>
+            <b-input v-model="message" maxlength="140" type="textarea" text="Yo!"/>
           </b-field>
           <b-button type="is-dark" style="background-color: #22243c;" @click="addPost">Submit</b-button>
         </div>
         <hr class="hr">
+        <ul>
+          <li><span style="font-weight: bold; color: green;">Elena Benoit 9:37 am:</span> Really enjoying today's keynote!</li>
+          <li><span style="font-weight: bold; color: green;">Brian Dawson 9:37 am:</span> First demo was awesome, looking forward to more product integrations.</li>
+          <li><span style="font-weight: bold; color: green;">Kathy Lam 9:39 am:</span> Feature flags are the most underrated technology in software development today. Fight me on this.</li>
+        </ul>
         <Post v-for="post in posts" :key="post.id" :post="post"/>
       </div>
     </div>
