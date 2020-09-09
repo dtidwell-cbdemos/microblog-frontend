@@ -1,9 +1,23 @@
 <template>
   <div class="container">
     <hr class="hr is-invisible">
-    <div class="box" style="background-color: pink;">
-      <h1 class="title">Posts version 1.0.15 <span v-if="show_title"> - Show New Title!</span></h1>
-      <hr class="hr">
+    <div class="box" style="background-color: #22243c;">
+      <div class="columns" v-if="show_logo">
+        <div class="column is-three-quarters">
+          <h1 class="title" style="color: white;">Microblog - Share Your Thoughts!</h1>
+        </div>
+        <div class="column">
+            <img src="../assets/DW_wordmark.png"/>
+        </div>
+      </div>
+      <div class="columns" v-else>
+        <div class="column is-three-quarters">
+          <h1 class="title" style="color: white;">Microblog - Share Your Thoughts!</h1>
+        </div>
+        <div class="column">
+            <img src="../assets/DW_wordmark.png"/>
+        </div>
+      </div>
       <div class="columns" v-if="show_sidebar">
         <div class="box column is-three-quarters">
           <div class="box">
@@ -20,9 +34,14 @@
         <div class="box column">
           <h3 class="is-size-4 has-text-weight-bold">Users list</h3>
           <ul>
-            <li v-for="user in users" :key="user.url">
-              <a :href="user.url">{{user.username}}</a>
-            </li>
+            <li>Shawn Ahmed</li>
+            <li style="font-weight: bold; color: green;">Emmanuel Bamishaye</li>
+            <li style="font-weight: bold; color: green;">Elena Benoit</li>
+            <li>Anand Chauhan</li>
+            <li style="font-weight: bold; color: green;">Brian Dawson</li>
+            <li>Logan Donley</li>
+            <li style="font-weight: bold; color: green;">Kathy Lam</li>
+            <li>Doug Tidwell</li>
           </ul>
         </div>
       </div>
@@ -34,7 +53,7 @@
           >
             <b-input v-model="message" maxlength="140" type="textarea"/>
           </b-field>
-          <b-button type="is-dark" @click="addPost">Submit</b-button>
+          <b-button type="is-dark" style="background-color: #22243c;" @click="addPost">Submit</b-button>
         </div>
         <hr class="hr">
         <Post v-for="post in posts" :key="post.id" :post="post"/>
@@ -60,8 +79,9 @@ export default {
       posts: [],
       users: [],
       errors: [],
-      show_sidebar: Flags.sidebar.isEnabled(), 
-      show_title: Flags.title.isEnabled()
+      show_sidebar: Flags.sidebar.isEnabled(),
+      show_title: Flags.title.isEnabled(),
+      show_logo: Flags.logo.isEnabled()
     }
   },
   created () {
