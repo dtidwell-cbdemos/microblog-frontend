@@ -25,12 +25,11 @@
             </b-field>
             <b-button type="is-dark" @click="addPost">Submit</b-button>
           </div>
-          <hr class="hr">
-        <ul>
-          <li><span style="font-weight: bold; color: green;">Elena Benoit 9:37 am:</span> Really enjoying today's keynote!</li>
-          <li><span style="font-weight: bold; color: green;">Brian Dawson 9:37 am:</span> First demo was awesome, looking forward to more product integrations.</li>
-          <li><span style="font-weight: bold; color: green;">Kathy Lam 9:39 am:</span> Feature flags are the most underrated technology in software development today. Fight me on this.</li>
-        </ul>
+          <ul>
+            <li><span style="font-weight: bold; color: green;">Elena Benoit 9:37 am:</span> Really enjoying today's keynote!</li>
+            <li><span style="font-weight: bold; color: green;">Brian Dawson 9:37 am:</span> First demo was awesome, looking forward to more product integrations.</li>
+            <li><span style="font-weight: bold; color: green;">Kathy Lam 9:39 am:</span> Feature flags are the most underrated technology in software development today. Fight me on this.</li>
+          </ul>
         </div>
         <div class="box column">
           <h3 class="is-size-4 has-text-weight-bold">Users</h3>
@@ -54,7 +53,7 @@
           >
             <b-input v-model="message" maxlength="140" type="textarea" text="Yo!"/>
           </b-field>
-          <b-button type="is-dark" style="background-color: #22243c;" @click="addPost">Submit</b-button>
+          <b-button type="is-dark" style="background-color: #22243c;">Submit</b-button>
         </div>
         <hr class="hr">
         <ul>
@@ -62,27 +61,20 @@
           <li><span style="font-weight: bold; color: green;">Brian Dawson 9:37 am:</span> First demo was awesome, looking forward to more product integrations.</li>
           <li><span style="font-weight: bold; color: green;">Kathy Lam 9:39 am:</span> Feature flags are the most underrated technology in software development today. Fight me on this.</li>
         </ul>
-        <Post v-for="post in posts" :key="post.id" :post="post"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Post from '@/components/Post.vue'
 import axios from 'axios'
 import { mapGetters, mapState } from 'vuex'
 import { Flags } from '../utils/flags'
 
 export default {
-  name: 'posts',
-  components: {
-    Post
-  },
   data: function () {
     return {
       message: '',
-      posts: [],
       users: [],
       errors: [],
       show_sidebar: Flags.sidebar.isEnabled(),
@@ -91,7 +83,6 @@ export default {
     }
   },
   created () {
-    this.getPosts()
     this.getUsers()
   },
   computed: {
@@ -103,15 +94,6 @@ export default {
     ])
   },
   methods: {
-    getPosts: function () {
-      axios.get(`${process.env.VUE_APP_BASE_API_URL}/posts/`)
-        .then(response => {
-          this.posts = response.data
-        })
-        .catch(error => {
-          this.errors.push(error)
-        })
-    },
     getUsers: function () {
       axios.get(`${process.env.VUE_APP_BASE_API_URL}/users/`)
         .then(response => {
@@ -120,26 +102,6 @@ export default {
         .catch(error => {
           this.errors.push(error)
         })
-    },
-    addPost: function () {
-      if (this.message.length > 1 && this.message.length <= 140) {
-        axios.post(`${process.env.VUE_APP_BASE_API_URL}/posts/`, {
-          user: this.user.url,
-          message: this.message
-        }, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
-          }
-        })
-          .then(() => {
-            this.getPosts()
-            this.message = ''
-          })
-          .catch(e => {
-            this.errors.push(e)
-          })
-      }
     }
   }
 }
